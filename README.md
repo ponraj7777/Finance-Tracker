@@ -1,12 +1,39 @@
-# React + Vite
+Finance Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React.js web app to help users track income, expenses, and overall balance with a clean dashboard, interactive charts, and CSV import/export functionality. Data is securely stored in Firebase Firestore, and authentication is handled via Firebase Authentication.
 
-Currently, two official plugins are available:
+🔥 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔑 User Authentication – Signup/Login securely using Firebase Authentication
 
-## Expanding the ESLint configuration
+💰 Income & Expense Management – Add, edit, and delete transactions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📈 Dashboard Overview – View total balance, income, and expenses at a glance
+
+📊 Interactive Charts – Visualize financial data using line and pie charts
+
+📁 CSV Import/Export – Export transaction data to CSV or import from CSV files
+
+🔍 Sorting & Filtering – Filter transactions by date, amount, or category
+
+🖥️ Responsive Design – Works on desktop and mobile devices
+
+🛠️ Tech Stack
+
+Frontend: React.js, JavaScript, HTML, CSS
+
+UI Components: React Hooks, Ant Design
+
+Backend / Database: Firebase Firestore
+
+Authentication: Firebase Authentication (Email/Password login)
+
+🚀 Future Enhancements
+
+Category-based expense tracking
+
+Multi-user support with personalized dashboards
+
+Push notifications for overspending alerts
+
+Dark mode and improved UI themes
