@@ -19,8 +19,6 @@ function Stats({transactions,setTransactions,addTransaction}) {
     useEffect(()=>{
       const timer = setTimeout(()=>{
         setLoading(false);
-       
-        
       },2000)
     },[]);
 
