@@ -268,7 +268,26 @@ function Cards({transactions,setTransactions,addTransaction
         let totalExpense = 0;
         let runningBalance = 0;
         let balances = [];
-        let sorted = [...transactions].sort((a,b)=>new Date(a.date)-new Date(b.date));
+
+        const parseDate = (d) => {
+            if (!d) return new Date(0);
+            if (d.includes('-') && d.split('-')[0].length !== 4) {
+                const parts = d.split('-');
+                return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+            }
+            return new Date(d);
+        };
+
+        const formatDate = (dateObj) => {
+            if (isNaN(dateObj)) return "Invalid Date";
+            const yyyy = dateObj.getFullYear();
+            const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const dd = String(dateObj.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        };
+
+        let sorted = [...transactions].sort((a,b) => parseDate(a.date) - parseDate(b.date));
+
         sorted.forEach(t => {
             if(t.type === "income"){
                 totalIncome += Number(t.amount);
@@ -278,23 +297,25 @@ function Cards({transactions,setTransactions,addTransaction
                 totalExpense += Number(t.amount);
                 runningBalance -= Number(t.amount);
             }
-            balances.push({
-               
-                date: t.date,
-                
-                amount: runningBalance,
-                
-            });
+            
+            const parsedDateObj = parseDate(t.date);
+            const standardDate = formatDate(parsedDateObj);
+
+            const existingDate = balances.find(b => b.date === standardDate);
+            if (existingDate) {
+                existingDate.amount = runningBalance;
+            } else {
+                balances.push({
+                    date: standardDate,
+                    amount: runningBalance,
+                });
+            }
         });
-        
-      
-        
 
         setIncome(totalIncome);
         setExpense(totalExpense);
         setBalance(totalIncome-totalExpense);
         setBalancea(balances);
-        
     }
 
     function showModals() {
